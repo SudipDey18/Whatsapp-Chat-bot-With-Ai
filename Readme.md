@@ -62,13 +62,21 @@ API_KEY=your_openrouter_api_key
 
 ## 🚀 Run the Bot
 
+### ▶️ First Time Only
+
 ```bash
 node index.js
 ```
 
-1. Terminal shows a QR code.
-2. Scan it from WhatsApp: Settings → Linked Devices → Link a Device.
-3. After login, look for `Client is ready!` in the terminal.
+> If everything works, you'll see a QR code in terminal to scan with WhatsApp.
+
+### 🔁 Every Time You Rerun (if any error like auth or module missing):
+
+```bash
+rm -rf node_modules .wwebjs_auth && npm install && node index.js
+```
+
+> If you face issues on rerun, this command deletes `node_modules` and `.wwebjs_auth`, reinstalls dependencies, and restarts.
 
 ---
 
