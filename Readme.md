@@ -80,13 +80,18 @@ rm -rf node_modules .wwebjs_auth && npm install && node index.js
 
 ---
 
+> **Note:** This bot only responds in private chats to the connected WhatsApp number. Any messages sent to groups are ignored. In private chat, it will automatically reply as a bot with AI features. AI search features are available in both private and group chats.
+
+---
+
+
 ## 💬 How to Interact
 
 | 💬 Type        | ✅ Example                       | 🤖 Bot Reply                               |
 | -------------- | ------------------------------- | ------------------------------------------ |
 | Chat Message   | `Hey, what's up?`               | `Yo, all good here! 😊`                    |
 | AI Search      | `#ai-What is AI?`               | `AI stands for Artificial Intelligence...` |
-| Invalid Format | `#ai`                           | `*Format must be*\n#ai-\"your question\"`  |
+| Invalid Format | `#ai`                           | `Format must be #ai-"your question"`       |
 | Filtered Text  | `My password is secret`         | *(Bot will skip this message)*             |
 | Personal Text  | `Hey I need help with my email` | *(Bot will skip this message)*             |
 
