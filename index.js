@@ -92,7 +92,7 @@ async function ai_search(prompt) {
                 ]
             })
         });
-
+        
         const data = await response.json();
         return data.choices[0]?.message?.content || "No response from AI";
 
@@ -107,7 +107,7 @@ async function ai_reply(message) {
         const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
             method: "POST",
             headers: {
-                "Authorization": "Bearer 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",
+                "Authorization": `Bearer ${process.env.API_KEY}`,
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
