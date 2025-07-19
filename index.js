@@ -31,11 +31,12 @@ wh.on('qr', qr => {
 })
 
 wh.on('ready', () => {
-    console.log("Client is REady");
+    console.log("🤖 Client is REady");
 })
 
 wh.on('message', async (message) => {
-    // console.log(message.body);
+    console.log("From: "+message.from);
+    console.log("Message: "+message.body);
     if (message.body.includes("#ai") || message.body.includes("#Ai")) {
         if (message.body === "#ai" || message.body === "#Ai") {
             wh.sendMessage(message.from, `*Formate must be* 
@@ -115,7 +116,7 @@ async function ai_reply(message) {
                 "messages": [
                     {
                         "role": "user",
-                        "content": `You are a WhatsApp auto-reply bot. When you receive a message:
+                        "content": `You are a WhatsApp auto-reply bot Act like a man reply in funny word. When you receive a message:
                             1. If it contains personal content, output null.
                             2. Otherwise, reply in the same tone and language—keep it casual, playful, and  friendly, mirroring any slang and emojis.
                             3. Output only the reply text, without any additional commentary strictly follow this.
