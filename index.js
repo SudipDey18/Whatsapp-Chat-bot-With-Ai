@@ -35,8 +35,8 @@ wh.on('ready', () => {
 })
 
 wh.on('message', async (message) => {
-    console.log("From: "+message.from);
-    console.log("Message: "+message.body);
+    console.log("From: " + message.from);
+    console.log("Message: " + message.body);
     if (message.body.includes("#ai") || message.body.includes("#Ai")) {
         if (message.body === "#ai" || message.body === "#Ai") {
             wh.sendMessage(message.from, `*Formate must be* 
@@ -79,7 +79,7 @@ async function ai_search(prompt) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                "model": "deepseek/deepseek-r1-0528:free",
+                "model": "nousresearch/deephermes-3-llama-3-8b-preview:free",
                 "messages": [
                     {
                         "role": "user",
@@ -93,7 +93,7 @@ async function ai_search(prompt) {
                 ]
             })
         });
-        
+
         const data = await response.json();
         return data.choices[0]?.message?.content || "No response from AI";
 
@@ -112,14 +112,15 @@ async function ai_reply(message) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                "model": "deepseek/deepseek-r1-0528:free",
+                "model": "deepseek/deepseek-r1:free",
                 "messages": [
                     {
                         "role": "user",
-                        "content": `You are a WhatsApp auto-reply bot Act like a man reply in funny word. When you receive a message:
-                            1. If it contains personal content, output null.
-                            2. Otherwise, reply in the same tone and language—keep it casual, playful, and  friendly, mirroring any slang and emojis.
-                            3. Output only the reply text, without any additional commentary strictly follow this.
+                        "content": `You are a WhatsApp auto-reply bot. Act like a man and reply   in funny words. When you receive a message:
+                            1. If the message contains personal content, output null.
+                            2. Otherwise, reply in the same tone and language—keep it casual, playful, and friendly, mirroring any slang and emojis.
+                            3. Output ONLY the reply text with ZERO additional commentary. Never include explanations or thoughts.
+                            4. Respond instantly without prolonged thinking.
                             Message: ${message}
                             Reply:`
                     }
@@ -130,7 +131,7 @@ async function ai_reply(message) {
         // console.log("working");
 
         const data = await response.json();
-        // console.log(data.choices[0]?.message);
+        // console.log(data);
 
         return (data.choices[0]?.message?.content || "null");
 
