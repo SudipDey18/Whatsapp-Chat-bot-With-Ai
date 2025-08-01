@@ -17,9 +17,19 @@ const wh = new Client({
         args: [
             '--no-sandbox',
             '--disable-setuid-sandbox',
-            '--disable-gpu',
             '--disable-dev-shm-usage',
-            '--no-zygote'  // Add this flag
+            '--disable-accelerated-2d-canvas',
+            '--no-first-run',
+            '--no-zygote',
+            '--disable-gpu',
+            '--disable-extensions',
+            '--single-process', // Critical for root environment
+            '--disable-features=VizDisplayCompositor',
+            '--disable-web-security', // Additional security relaxation
+            '--aggressive-cache-discard', // Memory optimization
+            '--disable-cache', // Prevent caching issues
+            '--disable-software-rasterizer',
+            '--disable-notifications'
         ]
     }
 });
